@@ -290,6 +290,13 @@ Rectangle{
 
     }
 
-
+    transitions: [
+        Transition {
+            from: "fromState"
+            to: "toState"
+            // Target
+            ColorAnimation { from: "white"; to: "black"; duration: 200 }
+        }
+    ]
 }
 
