@@ -8,6 +8,7 @@ Rectangle {
     property int  fontSize: 10
     property string text: "Button"
     property bool  dragAble: false
+    scale:1.0
 
     property variant colorArray:["#00bde3", "#67c111", "#ea7025"]
 
@@ -59,11 +60,11 @@ Rectangle {
 
         onExited: {
             button.opacity = 1
-            //button.color = "green"
+            button.color = "green"
         }
 
         onHoveredChanged: {
-            //button.color =  "lightblue"
+            button.color =  "lightblue"
         }
     }
 

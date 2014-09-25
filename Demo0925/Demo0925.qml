@@ -182,5 +182,65 @@ Rectangle {
 //                }
             }
     }
+
+
+    //----------------------------------------------------Path view
+    PathView{
+        id: pad
+        width:100; height:400
+        y:200;x:300
+
+        model: 20
+        delegate: flipCardDelegate
+
+        path: Path{
+            startX: pad.width /2
+            startY: 0
+
+            PathAttribute{name:"itemZ"; value:0}
+            PathAttribute{name:"itemAngle"; value:-90.0}
+            PathAttribute{name:"itemScale"; value:0.5}
+            PathLine{x: pad.width/2; y: pad.height*0.4}
+            PathPercent{value:0.45}
+            PathAttribute{name:"itemZ"; value:100}
+            PathAttribute{name:"itemAngle"; value:0.0}
+            PathAttribute{name:"itemScale"; value:1.0}
+            PathLine{x: pad.width/2; y: pad.height*0.6}
+            PathPercent{value:0.55}
+            PathAttribute{name:"itemZ"; value:0.0}
+            PathAttribute{name:"itemAngle"; value:90}
+            PathAttribute{name:"itemScale"; value:0.5}
+        }
+
+        pathItemCount: 13
+
+        preferredHighlightBegin: 0.5
+        preferredHighlightEnd: 0.5
+
+    }
+
+    Component{
+        id: flipCardDelegate
+
+        Btn_T1{
+            id: btn
+            //anchors.centerIn: parent
+            text: index
+            fontSize: 16
+            onClicked: {
+
+            }
+            scale: PathView.itemScale
+            z: PathView.itemZ
+            visible:PathView.onPath
+            property variant rotX: PathView.itemAngle
+
+            transform: Rotation{
+                axis {x:1; y:0;z:0}
+                angle:{btn.rotX}
+                origin{x:32; y:32}
+            }
+        }
+    }
 }
 
