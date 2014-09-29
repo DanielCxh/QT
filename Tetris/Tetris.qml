@@ -65,7 +65,7 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                  Control.createBlock()
+                  Control.createBlock(Math.floor(Math.random()* 4))
                   mainScrn.repaint()
             }
         }
